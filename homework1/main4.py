@@ -6,6 +6,7 @@
 - A (3,6); B (2,1) -> 5,09
 - A (7,-5); B (1,-1) -> 7,21
 '''
+
 import math
 from math import sqrt
 
@@ -20,7 +21,7 @@ def coordinates_point_entry():
 
 def distance_calculation(point_a, point_b):
     #distance = ((((point_a[0] - point_b[0]) ** 2) + ((point_a[1] - point_b[1]) ** 2)) ** (0.5))
-    #distance = math.sqrt(((point_a[0] - point_b[0]) ** 2) + ((point_a[1] - point_b[1]) ** 2)) 
+    #distance = math.sqrt( ((point_a[0] - point_b[0])**2) + ((point_a[1] - point_b[1])**2) ) 
     distance = sqrt(((point_a[0] - point_b[0]) ** 2) + ((point_a[1] - point_b[1]) ** 2)) 
     return distance
 
