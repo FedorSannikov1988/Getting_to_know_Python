@@ -15,7 +15,7 @@ def right_expression(X, Y, Z):
 
 
 def output_screen(X, Y, Z):
-    print(f'¬({X} ⋁ {Y} ⋁ {Z}) = {left_expression(X, Y, Z)};   ¬{X} ⋀ ¬{Y} ⋀ ¬{Z} = {right_expression(X, Y, Z)};   Равенство левой и правой части: {left_expression(X, Y, Z) == right_expression(X, Y, Z)}.')
+    return (print(f'¬({X} ⋁ {Y} ⋁ {Z}) = {left_expression(X, Y, Z)};   ¬{X} ⋀ ¬{Y} ⋀ ¬{Z} = {right_expression(X, Y, Z)};   Равенство левой и правой части: {left_expression(X, Y, Z) == right_expression(X, Y, Z)}.'))
 
 
 def validation_rezalt(bool_list_resalt):
@@ -25,6 +25,8 @@ def validation_rezalt(bool_list_resalt):
             break
     else:
         print('¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z верно для всех значений предикат')
+    
+    return
 
 
 bool_list = [True, False]

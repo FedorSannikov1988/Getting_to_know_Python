@@ -19,7 +19,9 @@ if ( (x_koordinata != 0) and (y_koordinata != 0) ):
     elif ( (x_koordinata < 0) and (y_koordinata < 0)  ): byffer = 2
     elif ( (x_koordinata > 0) and (y_koordinata < 0)  ): byffer = 3
     print(f'Введенные координаты X={x_koordinata} и Y={y_koordinata} соответствуют: {namber_quarter[byffer]}')
+
 elif (x_koordinata == 0 ):
     print('Введенное Вами значение координаты Х равно нулю. Будьте внимательнее.')
+
 elif (y_koordinata == 0 ):
     print('Введенное Вами значение координаты Y равно нулю. Будьте внимательнее.')
