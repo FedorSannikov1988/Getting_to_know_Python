@@ -63,19 +63,24 @@ def multiplying_element_list(index, element):
     return byffer
 
 
-namber_string = input("Введите натуральное положительное число N: ")
+namber_string = \
+input("Введите натуральное положительное число N: ")
+
 print(f"Считаем что Вы ввели число: {validation_namber(namber_string)}")
 
 
-nambers = create_list(validation_namber(namber_string))
+nambers = \
+create_list(validation_namber(namber_string))
 print(nambers)
 
 
-indexing = input_index_multiplying_element("Введите индексы элементов которые необходимо перемножить: ")
+indexing = \
+input_index_multiplying_element("Введите индексы элементов которые необходимо перемножить: ")
 print(f"Введенные значения индексов: {indexing}")
 
 
-indexing = validation_index(indexing, nambers)
+indexing = \
+validation_index(indexing, nambers)
 
 
 print(f"Значения индесов после валидации/проверки: {indexing}")

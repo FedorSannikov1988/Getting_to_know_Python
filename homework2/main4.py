@@ -17,7 +17,7 @@ def my_shuffle(list):
     return list
 
 list_string = ['Один', 'Два', 'Три', 'Четыре', 'Пять']
-list_copi_1 = list_string[:]
+list_copi_1 = list_string.copy()
 list_copi_2 = list_string[:]
 
 print(f'Список до перемешывания: {list_string}')
