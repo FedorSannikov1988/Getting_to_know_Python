@@ -9,3 +9,5 @@ match word:
         print("int")
     case _:
         print("zero")
+
+        
