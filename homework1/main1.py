@@ -7,11 +7,11 @@
 '''
 
 def left_expression(X, Y, Z):
-    return (not (X or Y or Z))
+    return (not(X or Y or Z))
 
 
 def right_expression(X, Y, Z):
-    return (not (X) and not (Y) and not (Z))
+    return (not(X) and not(Y) and not(Z))
 
 
 def output_screen(X, Y, Z):
