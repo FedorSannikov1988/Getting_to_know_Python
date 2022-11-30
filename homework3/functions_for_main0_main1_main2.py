@@ -1,3 +1,7 @@
+'''
+Вынесенные функции
+'''
+
 import random
 
 def creating_list_random_number\

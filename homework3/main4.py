@@ -6,6 +6,7 @@
 Для k = 8 список будет выглядеть так: 
 [-21 ,13, -8, 5, -3, 2, -1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21]
 '''
+
 import copy
 
 def namber_positive_fibonacci(namber: int) -> int:  
@@ -16,6 +17,7 @@ def namber_positive_fibonacci(namber: int) -> int:
         return 1
     else:
         return (namber_positive_fibonacci(namber-1) + namber_positive_fibonacci(namber-2))
+
 
 def create_list_fibonacci(lenght_fibonacci: int) -> list:
 
@@ -34,6 +36,7 @@ def create_list_fibonacci(lenght_fibonacci: int) -> list:
         list_fibonacci = [*resalt_negative_list, *resalt_positive_list]
                 
         return list_fibonacci
+
 
 def create_list_fibonacci_v2(lenght_fibonacci: int) -> list:
 
