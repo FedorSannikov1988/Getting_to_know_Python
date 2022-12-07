@@ -84,13 +84,15 @@ with open(relative_file_directory_for_read_and_write, 'r', encoding='utf-8') as 
 if not results_all_games:
     print("\n")
     print("\n")
-    print('\t СОХРАНЕННЫХ РЕЗУЛЬТАТОВ ИГР НЕТ')
+    print('\tСОХРАНЕННЫХ РЕЗУЛЬТАТОВ ИГР НЕТ')
     print("\n")
     print("\n")
 else:
-   print("РЕЗУЛЬТАТЫ ПОСЛЕДНЕЙ ИГРЫ:")
-   playing_field_list(results_all_games[len(results_all_games)-1].split(" "))
-   print("__________________________")
+    print("\n")
+    print("\n")
+    print("\tРЕЗУЛЬТАТЫ ПОСЛЕДНЕЙ ИГРЫ:")
+    playing_field_list(results_all_games[len(results_all_games)-1].split(" "))
+    print("__________________________")
 
 field_for_game = list(range(1,10,1))
 playing_field_list(field_for_game)

@@ -1,6 +1,5 @@
 w = ['X', 'O', 'X', 'O', 'X', 'O', 'X', 8, 9]
 
-
 def create_line(resalt_list: list) -> str:
         
     resalt_text = ''

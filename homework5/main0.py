@@ -26,9 +26,9 @@ def my_function_search_in_line_text_and_clear(line: str, search_text: str) -> st
     
     for count in range(0, len(resalt_list), 1):
         if count != len(resalt_list)-1:
-            resalt_text += resalt_list[count] + ' '
+            resalt_text += str(resalt_list[count]) + ' '
         else:
-            resalt_text += resalt_list[count]
+            resalt_text += str(resalt_list[count])
 
     return resalt_text
 
@@ -43,9 +43,9 @@ def create_line(resalt_list: list) -> str:
     
     for count in range(0, len(resalt_list), 1):
         if count != len(resalt_list)-1:
-            resalt_text += resalt_list[count] + ' '
+            resalt_text += str(resalt_list[count]) + ' '
         else:
-            resalt_text += resalt_list[count]
+            resalt_text += str(resalt_list[count])
 
     return resalt_text
 
