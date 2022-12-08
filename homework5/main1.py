@@ -19,14 +19,16 @@
 вторым игроком и им самим (первым игроком) равной 29 конфетам
 
 Насколько понимаю это идея для супер бота которого невозможно обыграть
-Не знаю успею воплотить или нет данную идею ...
 '''
+
 import random
 from pathlib import Path
 
 def entering_name_and_choosing_order_game():
 
     print("Введите через нажатие клавиши 'Enter' имена двух игроков")
+    print("Если хотите сыграть с 'тупым' ботом введи вместо одного из имен 'stupid bot'")
+    print("Если хотите сыграть с 'умным' ботом введи вместо одного из имен 'smart bot'")
 
     player_names = ["",""]
     
@@ -61,6 +63,8 @@ def entering_name_and_choosing_order_game():
 
     game_for_dictionary["Status " + str(player_names[0])] = ""
     game_for_dictionary["Status " + str(player_names[1])] = ""
+
+    game_for_dictionary["Step this game for end"] = 0
 
     return game_for_dictionary
 
@@ -113,13 +117,47 @@ def print_resalt_three(game_for_dictionary: dict):
     print("\n")
     print("----------------------------------")
     if game_for_dictionary["Status " + str(game_for_dictionary['player1'])] == "Win":
-        print(f"Выйграл {game_for_dictionary['player1']}")
+        print(f"Выйграл {game_for_dictionary['player1']} за ходов:", int(game_for_dictionary["Step this game for end"]))
         print(f"Проиграл {game_for_dictionary['player2']}")
-        print(f"{game_for_dictionary['player2']} отдаст {game_for_dictionary['player1']}", int(game_for_dictionary["Account " + str(game_for_dictionary['player2'])]), "конфеты")
+        print(f"{game_for_dictionary['player2']} отдаст {game_for_dictionary['player1']}", int(game_for_dictionary["Account " + str(game_for_dictionary['player2'])]), "конфет")
     else:
-        print(f"Выйграл {game_for_dictionary['player2']}")
+        print(f"Выйграл {game_for_dictionary['player2']} за ходов:", int(game_for_dictionary["Step this game for end"]))
         print(f"Проиграл {game_for_dictionary['player1']}")
         print(f"{game_for_dictionary['player1']} отдаст {game_for_dictionary['player2']}", int(game_for_dictionary["Account " + str(game_for_dictionary['player1'])]), "конфет")
+
+def print_resalt_for(results_all_games: str):
+
+    if not results_all_games:
+        print("\n")
+        print("\n")
+        print('СОХРАНЕННЫХ РЕЗУЛЬТАТОВ ИГР НЕТ')
+        print("\n")
+        print("\n")
+    else:
+        print("\n")
+        print(f"\tВСЕГО СОХРАНЕННО ИГР: {len(results_all_games)}")
+        print("\n")
+        print("\tРЕЗУЛЬТАТЫ ПОСЛЕДНЕЙ СОХРАНЕННОЙ ИГРЫ:")
+        print("\n")
+        print("\t", "'"+ results_all_games[len(results_all_games)-1].split("Status ")[1].split(",")[0])
+        print("\n")
+        print("\t", "'"+ results_all_games[len(results_all_games)-1].split("Status ")[2].split(",")[0])
+        print("\n")
+
+file_name_read_and_write = "log_for_game_in_main1.txt"
+relative_file_directory_for_read_and_write = Path(file_name_read_and_write)
+
+with open(relative_file_directory_for_read_and_write, 'r') as data:
+    
+    results_all_games = list()
+    
+    for line in data:
+        results_all_games.append(line)
+
+    for count in range(0, len(results_all_games), 1):
+        results_all_games[count] = results_all_games[count].replace('\n', '')
+
+print_resalt_for(results_all_games)
 
 game_for_dictionary = entering_name_and_choosing_order_game()
 
@@ -127,8 +165,15 @@ print_resalt_two(game_for_dictionary)
 
 count_step_game = 1
 
-quantity_candy = 50
-#quantity_candy = 2021
+#для тестирования
+#quantity_candy = 50
+quantity_candy = 2021
+
+previous_answer_human = 0
+    
+previous_answer_player = 0
+
+flag_for_smart_bot = "Wait"
 
 while True:
 
@@ -138,29 +183,70 @@ while True:
         name_games = game_for_dictionary['player2']
     else:
         name_games = game_for_dictionary['player1']
+
+    if name_games == "stupid bot":
+        if quantity_candy >= 28:
+            player_answer = random.randint(1, 28)
+        else:
+            player_answer = random.randint(1, quantity_candy)
+        print(f"stupid bot взял {player_answer} конфет")
+
+    elif name_games == "smart bot" and count_step_game == 1:
+        player_answer = quantity_candy % 29
+        flag_for_smart_bot = "Win"
+        print(f"smart bot взял {player_answer} конфет")
     
-    player_answer = take_input(name_games, quantity_candy)
+    elif name_games == "smart bot" and flag_for_smart_bot == "Win":
+        if quantity_candy >= 28:
+            player_answer = 29 - previous_answer_human
+        else:
+            player_answer = quantity_candy
+        print(f"smart bot взял {player_answer} конфет")
     
+    elif name_games == "smart bot" and flag_for_smart_bot == "Wait":
+        if quantity_candy % 29 <= 28:
+            player_answer = quantity_candy % 29
+            flag_for_smart_bot = "Win"
+        elif quantity_candy % 29 == 0 or quantity_candy % 29 > 28:
+            if quantity_candy >= 28:
+                player_answer = random.randint(1, 28)
+            else:
+                player_answer = random.randint(1, quantity_candy)
+        print(f"smart bot взял {player_answer} конфет")
+    
+    else:
+        player_answer = take_input(name_games, quantity_candy)
+        previous_answer_human = player_answer
+    
+    previous_answer_player = player_answer
+
     game_for_dictionary["Account " + str(name_games)] += player_answer
 
     quantity_candy -= player_answer
 
     if quantity_candy == 0:
-        if name_games == 'player1':     
-            game_for_dictionary["Status " + str(game_for_dictionary['player1'])] = "Win"
-            game_for_dictionary["Status " + str(game_for_dictionary['player2'])] = "Loss"
-        else:
-            game_for_dictionary["Status " + str(game_for_dictionary['player1'])] = "Win"
+
+        if game_for_dictionary['player1'] == str(name_games):
+            game_for_dictionary["Status " + str(name_games)] = "Win"
             game_for_dictionary["Status " + str(game_for_dictionary['player2'])] = "Loss"
         
+        if game_for_dictionary['player2'] == str(name_games):
+            game_for_dictionary["Status " + str(name_games)] = "Win"
+            game_for_dictionary["Status " + str(game_for_dictionary['player1'])] = "Loss"
+
         break
 
     count_step_game += 1
 
+    game_for_dictionary["Step this game for end"] = count_step_game
+
+
 print_resalt_three(game_for_dictionary)
+
 
 file_name_read_and_write = "log_for_game_in_main1.txt"
 relative_file_directory_for_read_and_write = Path(file_name_read_and_write)
 
+
 with open(relative_file_directory_for_read_and_write, 'a', encoding='utf-8') as data_out:
-    data_out.write(str(game_for_dictionary))
+    data_out.write(f"{str(game_for_dictionary)}\n")

@@ -1,1 +1,3 @@
-{'player1': 'dsa', 'player2': 'qwe', 'Account qwe': 22, 'Account dsa': 28, 'Status qwe': 'Loss', 'Status dsa': 'Win'}
+{'player1': 'Anton', 'player2': 'Dima', 'Account Anton': 30, 'Account Dima': 20, 'Status Anton': 'Win', 'Status Dima': 'Loss', 'Step this game for end': 5}
+{'player1': 'Dima', 'player2': 'stupid bot', 'Account stupid bot': 13, 'Account Dima': 37, 'Status stupid bot': 'Loss', 'Status Dima': 'Win', 'Step this game for end': 3}
+{'player1': 'smart bot', 'player2': 'Ura', 'Account smart bot': 22, 'Account Ura': 28, 'Status smart bot': 'Win', 'Status Ura': 'Loss', 'Step this game for end': 3}

@@ -90,7 +90,7 @@ if not results_all_games:
 else:
     print("\n")
     print("\n")
-    print("\tРЕЗУЛЬТАТЫ ПОСЛЕДНЕЙ ИГРЫ:")
+    print("\tРЕЗУЛЬТАТЫ ПОСЛЕДНЕЙ СОХРАНЕННОЙ ИГРЫ:")
     playing_field_list(results_all_games[len(results_all_games)-1].split(" "))
     print("__________________________")
 

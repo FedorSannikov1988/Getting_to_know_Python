@@ -9,6 +9,7 @@
 версия 2 топорненькая её я бы выдать смог после дня раздумий 
 и кучи компилящий
 '''
+
 def rle_encoder_v1(input_string: str) -> str:
 
     encoding = str()
