@@ -68,6 +68,7 @@ def dictionary_to_do_int_list(dictionary) -> list:
 '''
 не использую def sum_list_items(list_one: list, list_two: list) но жалко удалять 
 '''
+
 def sum_list_items(list_one: list, list_two: list) -> list:
 
     if len(list_one) > len(list_two):
