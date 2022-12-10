@@ -32,7 +32,8 @@ def creating_list_float_v1\
 def creating_list_float_v2\
     (list_float_random_number: list, rounding: int=4) -> list:
 
-    return [round(list_float_random_number[count]-list(map(int, list(list_float_random_number)))[count],rounding) \
+    return [round(list_float_random_number[count]- \
+        list(map(int, list(list_float_random_number)))[count], rounding) \
         for count in range(0 , len(list_float_random_number), 1)]
 
 data = [1.1, 1.2, 3.1, 5, 10.01]

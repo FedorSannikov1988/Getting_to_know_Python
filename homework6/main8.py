@@ -59,6 +59,12 @@ def create_list_fibonacci_v2(lenght_fibonacci: int) -> list:
         
         return resalt_negative_list + resalt_positive_list
 
+#по приколу все из варианта №2 запихнул в одну строчку
+#я понимаю что в реальных проектах так делать нельзя
+def create_list_fibonacci_v3(lenght_fibonacci: int) -> list:
+        return [list(filter(lambda x: x!=0, [((-1)**(abs(count)+1))*namber_positive_fibonacci(abs(count)) for count in range(0, abs(lenght_fibonacci)+1, 1)]))[len(list(filter(lambda x: x!=0, [((-1)**(abs(count)+1))*namber_positive_fibonacci(abs(count)) for count in range(0, abs(lenght_fibonacci)+1, 1)])))-count-1] for count in range(0, len(list(filter(lambda x: x!=0, [((-1)**(abs(count)+1))*namber_positive_fibonacci(abs(count)) for count in range(0, abs(lenght_fibonacci)+1, 1)]))), 1)] +\
+             [namber_positive_fibonacci(count) for count in range(0, abs(lenght_fibonacci)+1, 1)]
+
 natural_number = int(input("Введите k для которого будет составлен список чисел Фибоначчи в том числе для отрицательных индексов: "))
 
 list_fibonacci_v1 = create_list_fibonacci_v1(natural_number)
@@ -69,3 +75,7 @@ print(list_fibonacci_v1)
 list_fibonacci_v2 = create_list_fibonacci_v2(natural_number)
 print("Последовательность Фиббаначи вариант №2:")
 print(list_fibonacci_v2)
+
+list_fibonacci_v3 = create_list_fibonacci_v3(natural_number)
+print("Последовательность Фиббаначи вариант №2:")
+print(list_fibonacci_v3)

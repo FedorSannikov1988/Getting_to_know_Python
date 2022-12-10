@@ -33,6 +33,7 @@ def creating_list_random_number_v1\
     
     return resalt_list
 
+
 def creating_list_float_random_number_v1\
     (quantity_random_number: int, min_val: float, max_val: float, rounding: int=4) -> list:  
 
@@ -51,9 +52,11 @@ def creating_list_float_random_number_v1\
     
     return resalt_list
 
+
 '''
 Стало после использования list comprehension:
 '''
+
 
 def creating_list_random_number_v2\
     (quantity_random_number: int, min_val: int, max_val: int) -> list:  
@@ -67,6 +70,7 @@ def creating_list_random_number_v2\
         max_val = min_val + 1
     
     return [random.randint(min_val, max_val) for _ in range(0, quantity_random_number, 1)]
+
 
 def creating_list_float_random_number_v2\
     (quantity_random_number: int, min_val: float, max_val: float, rounding: int=4) -> list:  

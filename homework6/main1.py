@@ -32,6 +32,16 @@ def list_numbers_and_summa_v2(namber):
     return [[function(count) for count in range(1, namber+1, 1)],\
         sum([function(count) for count in range(1, namber+1, 1)], 0)]
 
+
+def list_numbers_and_summa_v3(namber):
+    
+    function = lambda x: (x:= round((1+(1/x))**x, 2))
+    
+    return [[function(count)  for count in range(1, namber+1, 1)],\
+        sum([function(count) for count in range(1, namber+1, 1)], 0)]
+
+namber = 4
+
 namber = 4
 
 print("list_numbers_and_summa_v1(namber)")
@@ -39,3 +49,6 @@ print(list_numbers_and_summa_v1(namber))
 
 print("list_numbers_and_summa_v2(namber)")
 print(list_numbers_and_summa_v2(namber))
+
+print("list_numbers_and_summa_v3(namber)")
+print(list_numbers_and_summa_v3(namber))

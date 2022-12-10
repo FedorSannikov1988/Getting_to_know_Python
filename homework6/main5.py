@@ -27,7 +27,7 @@ def sum_odd_elements_v1\
     return summa
 
 '''
-Стало после использования list comprehension:
+Стало после использования list comprehension c if:
 '''
 
 def sum_odd_elements_v2\
