@@ -5,7 +5,7 @@
 '''
 
 '''
-Использование map и list comprehension
+Использование filter и list comprehension
 
 Функция creating_list_float взята
 из домашнего задания №3 задача № 5 (homework3/main2.py)
