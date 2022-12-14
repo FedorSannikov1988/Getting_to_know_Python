@@ -1,5 +1,6 @@
 from pathlib import Path
 import print_data
+
 '''
 импортировал import print_data для 
 того что бы проверять что беру из файла

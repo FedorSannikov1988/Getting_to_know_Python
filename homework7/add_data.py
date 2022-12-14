@@ -1,4 +1,4 @@
-def input_data_in_phone_directory() -> list:
+def input_data_in_phone_directory(flag_search: str = "not_search") -> list:
     
     count = 0
     
@@ -10,9 +10,18 @@ def input_data_in_phone_directory() -> list:
         
         human_answer_string = input(f"Введите {requested_data[count]}: ")
         
-        if count >= 3 and not human_answer_string.isdigit():
-            print("Повторите ввод телефонного номера")
-            continue
+        '''
+        временная заплатка (потом сделаю лучше)
+        '''
+
+        if flag_search == "search":
+            if count >= 3 and not human_answer_string.isdigit() and not human_answer_string == "":
+                print("Повторите ввод телефонного номера")
+                continue
+        else:
+            if count >= 3 and not human_answer_string.isdigit():
+                print("Повторите ввод телефонного номера")
+                continue
 
         try:
             data = human_answer_string
