@@ -5,13 +5,14 @@ import delete_data
 import search_data
 import choosing_action_for_user_interface as action_user
 import removing_repetitions as del_rep_rec
+import sorting_phone_book as sort_book
 
 def work_phone_directory():
 
     data = l_s_d.loading_data_from_phone_directory()
     
     while True:
-
+        
         action = action_user.choosing_start_work_action()
         
         match action:
@@ -28,15 +29,17 @@ def work_phone_directory():
                     search_data.search_data_in_telephone_directory(\
                         data, add_data.input_data_in_phone_directory("search")))
             case 6:
-                data = l_s_d.loading_data_from_phone_directory()
+                data = sort_book.sorting_data(data)
             case 7:
-                l_s_d.safe_data_in_phone_directory(del_rep_rec.delet_repeat_data(data))
+                data = l_s_d.loading_data_from_phone_directory()
             case 8:
-                l_s_d.safe_data_in_phone_directory(del_rep_rec.delet_repeat_data(data), "column")
+                l_s_d.safe_data_in_phone_directory(del_rep_rec.delet_repeat_data(data))
             case 9:
+                l_s_d.safe_data_in_phone_directory(del_rep_rec.delet_repeat_data(data), "column")
+            case 10:
                 print("данные не сохранены")
                 return True
-            case 10:
+            case 11:
                 l_s_d.safe_data_in_phone_directory(del_rep_rec.delet_repeat_data(data),\
                     action_user.choosing_action_for_safe())
                 print("данные сохранены")

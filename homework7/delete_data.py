@@ -1,6 +1,7 @@
 import search_data
 import print_data
 import add_data
+import validation_input_data as v_i_d
 
 def delet_data_from_list(data: list):
 
@@ -18,7 +19,7 @@ def delet_data_from_list(data: list):
     в функцию как будет время
     '''
     
-    human_answer_namber = validation_human_answer(2, 1)
+    human_answer_namber = v_i_d.validation_human_answer(2, 1)
     
     if human_answer_namber == 1:
         return delete_selected_lines(data)
@@ -61,12 +62,7 @@ def delete_FIO(data_in: list):
     print("\t 1 -  удалить")
     print("\t 2 -  не удалять") 
 
-    '''
-    надо писать функцию но время 
-    сдачи поджиает
-    '''
-
-    human_answer_namber = validation_human_answer(2, 1)
+    human_answer_namber = v_i_d.validation_human_answer(2, 1)
 
     if human_answer_namber == 1:
          data_out = list()
@@ -74,19 +70,3 @@ def delete_FIO(data_in: list):
          return data_out
     else:
         return data_in
-
-def validation_human_answer(max_answer: int, min_answer: int):
-
-        while True:
-            human_answer_string = input(f"Какое действие выбираете: ")
-            
-            if not human_answer_string.isdigit() or int(human_answer_string) > max_answer or int(human_answer_string) < min_answer:
-                print("Повторите ввод действия")
-                continue
-            try:
-                human_answer_namber = int(human_answer_string)
-                break
-            except ValueError:
-                print("Повторите ввод действия")
-                continue
-        return human_answer_namber

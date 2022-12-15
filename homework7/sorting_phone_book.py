@@ -1,19 +1,36 @@
-'''
-data_for_write = [["Фамилия1", "Имя1*", "Отчество1", 89609752504], ["Фамилия2", "Имя2*", "Отчество2", 89609752504], ["Фамилию3", "Имя3*", "Отчество3", 89609752504]]
-#flag = "line"
-flag = "column"
-safe_data_in_phone_directory(data_for_write, flag)
-data = loading_data_from_phone_directory()
-print_data.print_all_list_in_terminal(data)
-'''
+import validation_input_data as v_i_d
 
-'''
-data_for_write = [["Р", "Р*", "Р", 20], ["А", "А", "А", 5]]
+def sorting_data(data: list) -> list:
+    
+    '''
+    можно изящнее но нет времени
+    '''
 
-print(data_for_write[0][0])
+    print("\n")
+    print("\t\t   СОРТИРОВАТЬ ЗАПИСИ ПО")
+    print("\t","*"*41)
+    print("\t Выберите действие:")
+    print("\t 1 -  фамилии")
+    print("\t 2 -  имени")
+    print("\t 3 -  отчеству")
+    print("\t 4 -  номеру телефона")
+    print("\n")
 
-def keyFunc(item):
-   return item[0][0]
+    selecting_item_to_sort = v_i_d.validation_human_answer(4, 1)
 
-print(data_for_write.sort(key=keyFunc))
-'''
+    print("\n")
+    print("\t\t ВОЗРАСТАНИЮ ИЛИ УБЫВАНИЮ")
+    print("\t","*"*41)
+    print("\t Выберите действие:")
+    print("\t 1 -  убывание")
+    print("\t 2 -  возрастанию")
+    print("\n")
+
+    if v_i_d.validation_human_answer(2, 1) == 1:
+        flag_sort_order = False
+    else:
+        flag_sort_order = True
+
+    data = sorted(data, key=lambda list_for_sort: list_for_sort[selecting_item_to_sort-1], reverse = flag_sort_order)
+    
+    return data

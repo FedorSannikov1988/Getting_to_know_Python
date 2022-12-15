@@ -1,3 +1,5 @@
+import validation_input_data as v_i_d
+
 def choosing_start_work_action():
 
     print("\n")
@@ -9,38 +11,25 @@ def choosing_start_work_action():
     print("\t 3 -  удалить запис(-и)(-ь) из справочника")
     print("\t 4 -  удалить повторяющиеся записи")
     print("\t 5 -  найти запись в справочнике")
-    print("\t 6 -  загрузить данные (данные загруженные")
+    print("\t 6 -  сортировать записи")
+    print("\t 7 -  загрузить данные (данные загруженные")
     print("\t      ранее будут утеряны)")
-    print("\t 7 -  сохранить данные в формате: line")
-    print("\t 8 -  сохранить данные в формате: column")
-    print("\t 9 -  выйти из справочника без сохранения")
+    print("\t 8 -  сохранить данные в формате: line")
+    print("\t 9 -  сохранить данные в формате: column")
+    print("\t 10 - выйти из справочника без сохранения")
     print("\t      изминений и удаления повторов")
     print("\t      в телефонной книге")
-    print("\t 10 - выйти из справочника с сохранением")
+    print("\t 11 - выйти из справочника с сохранением")
     print("\t      изминений в телефонной книге")
     print("\t","-"*41)
-    print("\t Примечание к пункту 10:")
+    print("\t Примечание к пункту 11:")
     print("\t При выходе из справочника данные автоматически сохраняются.")
     print("\t Пользователю предоставляеся выбор в каком формате line или")
     print("\t column данные будут сохранены. Так же происходит удаление")
     print("\t повторяющихся записей.")
     print("")
-
-    while True:
-        human_answer_string = input(f"Какое действие выбираете: ")
-        
-        if not human_answer_string.isdigit() or int(human_answer_string) > 10 or int(human_answer_string) < 1 :
-            print("Повторите ввод действия")
-            continue
-
-        try:
-            human_answer_namber = int(human_answer_string)
-            break
-        except ValueError:
-            print("Повторите ввод действия")
-            continue
-    
-    return human_answer_namber
+      
+    return v_i_d.validation_human_answer(11, 1)
 
 def choosing_action_for_safe():
 
@@ -65,23 +54,9 @@ def choosing_action_for_safe():
     print("\t Фамилия1;Имя1;Отчество1;Телефон1")
     print("\t Фамилия2;Имя2;Отчество2;Телефон2")
 
-    while True:
-        human_answer_string = input(f"Какое действие выбираете: ")
-        
-        if not human_answer_string.isdigit() or int(human_answer_string) > 2 or int(human_answer_string) < 1 :
-            print("Повторите ввод действия")
-            continue
+    human_answer_namber = v_i_d.validation_human_answer(2, 1)
 
-        try:
-            human_answer_namber = int(human_answer_string)
-            break
-        except ValueError:
-            print("Повторите ввод действия")
-            continue
-    
     if human_answer_namber == 1:
-        flag_for_format_safe_data = "column"
+        return "column"
     elif human_answer_namber == 2:
-        flag_for_format_safe_data = "line"
-
-    return flag_for_format_safe_data
+        return "line"
