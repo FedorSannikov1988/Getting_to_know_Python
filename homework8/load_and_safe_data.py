@@ -1,21 +1,8 @@
 from pathlib import Path
 import print_data
 
-'''
-импортировал import print_data для 
-того что бы проверять что беру из файла
-'''
-
-'''
-Тяжеловесно конешно но зато я смог написать очень быстро 
-данный модуль хотя конешно применение такого 
-количесва for (особенно в модуле loading_data_from_phone_directory())
-не оправдано (можно куда изящнее)
-'''
-
 file_name = "phone_directory.csv"
 relative_file_directory = Path(file_name)
-
 
 def safe_data_in_phone_directory(data_for_write: list, flag_for_format_safe_data: str="line"):
 

@@ -11,13 +11,9 @@ def delet_data_from_list(data: list):
     print("\t ПРОЦЕДУРА УДАЛЕНИЯ ДАННЫХ:")
     print("\t---------------------------")
     print("\t Выберите действие:")
-    print("\t 1 -  удалить запись по номеру")
+    print("\t 1 -  удалить записи по их")
+    print("\t      порядковому номеру")
     print("\t 2 -  удалить записи по Ф.И.О.")   
-
-    '''
-    while True: надо обернуть 
-    в функцию как будет время
-    '''
     
     human_answer_namber = v_i_d.validation_human_answer(2, 1)
     

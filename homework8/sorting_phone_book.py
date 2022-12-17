@@ -1,10 +1,6 @@
 import validation_input_data as v_i_d
 
-def sorting_data(data: list) -> list:
-    
-    '''
-    можно изящнее но нет времени
-    '''
+def print_choice_in_sorting_data_number_one() -> None:
 
     print("\n")
     print("\t\t   СОРТИРОВАТЬ ЗАПИСИ ПО")
@@ -16,7 +12,7 @@ def sorting_data(data: list) -> list:
     print("\t 4 -  номеру телефона")
     print("\n")
 
-    selecting_item_to_sort = v_i_d.validation_human_answer(4, 1)
+def print_choice_in_sorting_data_number_two() -> None:
 
     print("\n")
     print("\t\t ВОЗРАСТАНИЮ ИЛИ УБЫВАНИЮ")
@@ -26,10 +22,17 @@ def sorting_data(data: list) -> list:
     print("\t 2 -  возрастанию")
     print("\n")
 
-    if v_i_d.validation_human_answer(2, 1) == 1:
-        flag_sort_order = False
-    else:
-        flag_sort_order = True
+def sorting_data(data: list) -> list:
+
+    print_choice_in_sorting_data_number_one()
+
+    selecting_item_to_sort = v_i_d.validation_human_answer(4, 1)
+
+    print_choice_in_sorting_data_number_two()
+
+    match v_i_d.validation_human_answer(2, 1):
+            case 1: flag_sort_order = False
+            case 2: flag_sort_order = True
 
     data = sorted(data, key=lambda list_for_sort: list_for_sort[selecting_item_to_sort-1], reverse = flag_sort_order)
     

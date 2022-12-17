@@ -1,6 +1,6 @@
 import validation_input_data as v_i_d
 
-def choosing_start_work_action():
+def choosing_start_work_action() -> None:
 
     print("\n")
     print("\t       ЗАПУЩЕН ТЕЛЕФОННЫЙ СПРАВОЧНИК")
@@ -8,30 +8,19 @@ def choosing_start_work_action():
     print("\t Выберите действие:")
     print("\t 1 -  просмотреть все записи в справочнике")
     print("\t 2 -  добавить запись в справочник")
-    print("\t 3 -  удалить запис(-и)(-ь) из справочника")
-    print("\t 4 -  удалить повторяющиеся записи")
-    print("\t 5 -  найти запись в справочнике")
-    print("\t 6 -  сортировать записи")
-    print("\t 7 -  загрузить данные (данные загруженные")
-    print("\t      ранее будут утеряны)")
-    print("\t 8 -  сохранить данные в формате: line")
-    print("\t 9 -  сохранить данные в формате: column")
-    print("\t 10 - выйти из справочника без сохранения")
-    print("\t      изминений и удаления повторов")
-    print("\t      в телефонной книге")
-    print("\t 11 - выйти из справочника с сохранением")
-    print("\t      изминений в телефонной книге")
-    print("\t","-"*41)
-    print("\t Примечание к пункту 11:")
-    print("\t При выходе из справочника данные автоматически сохраняются.")
-    print("\t Пользователю предоставляеся выбор в каком формате line или")
-    print("\t column данные будут сохранены. Так же происходит удаление")
-    print("\t повторяющихся записей.")
+    print("\t 3 -  меню удаление запис(-и)(-ей) из справочника")
+    print("\t 4 -  найти запись в справочнике")
+    print("\t 5 -  сортировать записи")
+    print("\t 6 -  загрузить данные (данные загруженные")
+    print("\t      или добавленные ранее во время сессии")
+    print("\t      будут утеряны)")
+    print("\t 7 -  меню сохранения данных")
+    print("\t 8 -  меню выхода из справочника")
     print("")
       
-    return v_i_d.validation_human_answer(11, 1)
+    return v_i_d.validation_human_answer(8, 1)
 
-def choosing_action_for_safe():
+def choosing_action_for_safe() -> None:
 
     print("\n")
     print("\t     В КАКОМ ФОРМАТЕ СОХРАНИТЬ ДАННЫЕ")
@@ -60,3 +49,51 @@ def choosing_action_for_safe():
         return "column"
     elif human_answer_namber == 2:
         return "line"
+
+def choosing_action_for_submenu_to_delete() -> None:
+
+    print("\n")
+    print("\t\t   МЕНЮ УДАЛЕНИЯ ДАННЫХ")
+    print("\t","*"*41)
+    print("\t Выберите действие:")
+    print("\t 1 -  удалить запис(-и)(-ь) из справочника")
+    print("\t 2 -  удалить повторяющиеся записи")
+    print("\t 3 -  вернуться в основное меню")
+    print("")
+    
+    return v_i_d.validation_human_answer(3, 1)
+
+def choosing_action_for_submenu_to_saving_data() -> None:
+    
+    print("\n")
+    print("\t\t  МЕНЮ СОХРАНЕНИЯ ДАННЫХ")
+    print("\t","*"*41)
+    print("\t Выберите действие:")
+    print("\t 1 -  сохранить данные в формате: line")
+    print("\t 2 -  сохранить данные в формате: column")
+    print("\t 3 -  вернуться в основное меню")
+    print("")
+
+    return v_i_d.validation_human_answer(3, 1)
+
+def choosing_action_for_submenu_exit_from_directory() -> None:
+    
+    print("\n")
+    print("\t\t\tМЕНЮ ВЫХОДА")
+    print("\t","*"*41)
+    print("\t Выберите действие:")
+    print("\t 1 - выйти из справочника без сохранения")
+    print("\t     изминений и удаления повторов")
+    print("\t     в телефонной книге")
+    print("\t 2 - выйти из справочника с сохранением")
+    print("\t     изминений в телефонной книге")
+    print("\t 3 - вернуться в основное меню")
+    print("\t","-"*41)
+    print("\t Примечание к пункту 2:")
+    print("\t При выходе из справочника данные автоматически сохраняются.")
+    print("\t Пользователю предоставляеся выбор в каком формате line или")
+    print("\t column данные будут сохранены. Так же происходит удаление")
+    print("\t повторяющихся записей.")
+    print("")
+    
+    return v_i_d.validation_human_answer(3, 1)
