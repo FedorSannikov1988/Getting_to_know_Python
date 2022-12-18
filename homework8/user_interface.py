@@ -8,6 +8,7 @@ import removing_repetitions as del_rep_rec
 import sorting_phone_book as sort_book
 import logger
 
+
 def work_phone_directory():
 
     data = l_s_d.loading_data_from_phone_directory()
