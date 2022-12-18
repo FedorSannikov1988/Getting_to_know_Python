@@ -9,9 +9,6 @@ with open(relative_file_directory, 'r') as data:
 
 app = ApplicationBuilder().token(my_token).build()
 
-app.add_handler(CommandHandler("hi", hi_command))
-app.add_handler(CommandHandler("time", time_command))
-app.add_handler(CommandHandler("help", help_command)  )
 app.add_handler(CommandHandler("sum", sum_command))
 
 print("server start")

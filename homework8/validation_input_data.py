@@ -1,4 +1,4 @@
-def validation_human_answer(max_answer: int, min_answer: int):
+def validation_human_answer(max_answer: int, min_answer: int) -> int:
 
         while True:
             human_answer_string = input(f"Какое действие выбираете: ")

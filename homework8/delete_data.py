@@ -1,29 +1,24 @@
 import search_data
 import print_data
 import add_data
-import validation_input_data as v_i_d
+import logger
+import choosing_action_for_user_interface as action_user
 
-def delet_data_from_list(data: list):
+def delet_data_from_list(data: list) -> list():
 
     print_data.print_all_list_in_terminal(data)
 
-    print("\n")
-    print("\t ПРОЦЕДУРА УДАЛЕНИЯ ДАННЫХ:")
-    print("\t---------------------------")
-    print("\t Выберите действие:")
-    print("\t 1 -  удалить записи по их")
-    print("\t      порядковому номеру")
-    print("\t 2 -  удалить записи по Ф.И.О.")   
-    
-    human_answer_namber = v_i_d.validation_human_answer(2, 1)
-    
-    if human_answer_namber == 1:
+    byffer_for_choice = action_user.choosing_action_for_delet_data_from_list()
+
+    logger.log_entry(byffer_for_choice[1])
+
+    if byffer_for_choice[0] == 1:
         return delete_selected_lines(data)
     
-    if human_answer_namber == 2:
+    if byffer_for_choice[0] == 2:
         return delete_FIO(data)
 
-def delete_selected_lines(data_in: list):
+def delete_selected_lines(data_in: list) -> list():
     
     while True:
         text = "\tВведите через пробел номера строк \nкоторые необходимо удалить после чего нажмите 'Enter'\n"
@@ -35,8 +30,9 @@ def delete_selected_lines(data_in: list):
             print("Повторите ввод")
             continue
     
-    function = lambda x: x <= len(data_in)
+    function = lambda x: 1 <= x <= len(data_in)
     human_answer_namber = list(filter(function, human_answer_namber))
+    logger.log_entry(str(human_answer_namber))
 
     data_out = []
     
@@ -46,21 +42,19 @@ def delete_selected_lines(data_in: list):
     
     return data_out
 
-def delete_FIO(data_in: list):
+def delete_FIO(data_in: list) -> list():
 
     data_for_delete = search_data.search_data_in_telephone_directory(data_in, add_data.input_data_in_phone_directory("search"))
 
     print_data.print_all_list_in_terminal(data_for_delete)
 
-    print("\n")
-    print("\t УДАЛИТЬ ЭТИ ДАННЫЕ:")
-    print("\t Выберите действие:")
-    print("\t 1 -  удалить")
-    print("\t 2 -  не удалять") 
+    logger.log_entry(str(data_for_delete))
 
-    human_answer_namber = v_i_d.validation_human_answer(2, 1)
+    byffer_for_choice = action_user.choosing_action_for_delete_FIO()
 
-    if human_answer_namber == 1:
+    logger.log_entry(byffer_for_choice[1])
+
+    if byffer_for_choice[0] == 1:
          data_out = list()
          [data_out.append(element) for element in data_in if element not in data_for_delete]
          return data_out

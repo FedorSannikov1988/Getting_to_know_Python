@@ -1,8 +1,9 @@
 from pathlib import Path
-import print_data
+
 
 file_name = "phone_directory.csv"
 relative_file_directory = Path(file_name)
+
 
 def safe_data_in_phone_directory(data_for_write: list, flag_for_format_safe_data: str="line"):
 
@@ -21,7 +22,6 @@ def safe_data_in_phone_directory(data_for_write: list, flag_for_format_safe_data
             elif flag_for_format_safe_data == "line":
                 data.write("{};{};{};{}\n".format(data_for_write[count][0], \
                     data_for_write[count][1], data_for_write[count][2], data_for_write[count][3]))
-
 
 def loading_data_from_phone_directory() -> list:
 
@@ -63,16 +63,3 @@ def loading_data_from_phone_directory() -> list:
                             sorted_data[3+count_for_element]])
                 count_for_element +=4
             return resalt_data
-
-'''
-это для проверки работоспособности кода:
-'''
-
-'''
-data_for_write = [["Фамилия1", "Имя1*", "Отчество1", 89609752504], ["Фамилия2", "Имя2*", "Отчество2", 89609752504], ["Фамилию3", "Имя3*", "Отчество3", 89609752504]]
-#flag = "line"
-flag = "column"
-safe_data_in_phone_directory(data_for_write, flag)
-data = loading_data_from_phone_directory()
-print_data.print_all_list_in_terminal(data)
-'''

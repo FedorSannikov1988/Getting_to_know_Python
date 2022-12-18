@@ -28,7 +28,7 @@ def input_data_in_phone_directory(flag_search: str = "not_search") -> list:
             continue
         
         resalt_human_answer.append(data)
-        count +=1
+        count += 1
         if count == len(requested_data): break
     
     return resalt_human_answer
