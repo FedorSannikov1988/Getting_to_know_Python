@@ -27,7 +27,7 @@ def choosing_start_work_action()-> list():
     print("")
     
     byffer = v_i_d.validation_human_answer(8, 1)
-
+    
     return [byffer , dictionary_for_choosing_start_work_action[byffer]]
 
 def choosing_action_for_safe() -> list():
