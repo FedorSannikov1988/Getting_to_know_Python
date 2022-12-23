@@ -8,19 +8,27 @@ import logger
 file_name = "telephone_directory.sqlite"
 relative_file_directory = Path(file_name)
 
+async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    logger.record_keeping(update)
+
+    text1 = "Вы зашли в телефонный справочник\n"
+    text2 = "/help -> вызов справочного меню\n"
+    await update.message.reply_text(f'{text1+text2}')
+
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     logger.record_keeping(update)
 
     text1 = "/find_by_name -> найти запись по имени\n"
-    text2 = "Пример: /find_by_name Федор\n"
+    text2 = "Пример: /find_by_name Имя\n"
     text3 = "/find_by_surname -> найти запись по фамилии\n"
-    text4 = "Пример: /find_by_surname Санников\n"
+    text4 = "Пример: /find_by_surname Фамилия\n"
     text5 = "/find_by_name_and_surname -> найти запись по имени и фамилии\n"
-    text6 = "Пример: /find_by_name_and_surname Федор Санников\n"
+    text6 = "Пример: /find_by_name_and_surname Имя Фамилия\n"
     text7 = "/find_by_phone_number -> найти запись по номеру телефона\n"
-    text8 = "Пример: /find_by_phone_number 620070 \n"
-    text9 = "/show_all_record -> вывести все записи в справочнике (подумай стоит ли это делать) \n"
+    text8 = "Пример: /find_by_phone_number номер телефона\n"
+    text9 = "/show_all_record -> вывести все записи в справочнике (подумай стоит ли это делать)\n"
     await update.message.reply_text(f'{text1+text2+text3+text4+text5+text6+text7+text8+text9}')
 
 async def find_by_name(update: Update, context: ContextTypes.DEFAULT_TYPE):

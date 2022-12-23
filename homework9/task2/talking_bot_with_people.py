@@ -12,7 +12,8 @@ with open(relative_file_directory, 'r') as data:
 def start_talking_bot_with_people():
     
     app = ApplicationBuilder().token(my_token).build()
-    
+
+    app.add_handler(CommandHandler("start", bot_com.start_command))
     app.add_handler(CommandHandler("help", bot_com.help_command))
     app.add_handler(CommandHandler("find_by_name", bot_com.find_by_name))
     app.add_handler(CommandHandler("find_by_surname", bot_com.find_by_surname))
