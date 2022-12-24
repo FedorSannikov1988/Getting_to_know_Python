@@ -12,7 +12,7 @@ with open(relative_file_directory, 'r') as data:
 def start_talking_bot_with_people():
     
     app = ApplicationBuilder().token(my_token).build()
-
+    
     app.add_handler(CommandHandler("start", bot_com.start_command))
     app.add_handler(CommandHandler("help", bot_com.help_command))
     app.add_handler(CommandHandler("find_by_name", bot_com.find_by_name))
@@ -20,6 +20,8 @@ def start_talking_bot_with_people():
     app.add_handler(CommandHandler("find_by_name_and_surname", bot_com.find_by_name_and_surname))
     app.add_handler(CommandHandler("find_by_phone_number", bot_com.find_by_phone_number))
     app.add_handler(CommandHandler("show_all_record", bot_com.show_all_record))
+    app.add_handler(CommandHandler("add_entry_phone_book", bot_com.add_entry_phone_book))
+    app.add_handler(CommandHandler("delete_record_in_phone_book", bot_com.delete_record_in_phone_book))
 
     print("server start")
     app.run_polling()

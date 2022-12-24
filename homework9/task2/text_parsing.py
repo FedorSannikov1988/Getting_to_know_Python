@@ -34,3 +34,39 @@ def print_answer_for_bot_v1(data_in: list) -> str:
                 ansver += "\n"
         
         return ansver
+
+'''
+время появилось:
+'''
+def print_answer_for_bot_v2(data_in: list) -> str:
+
+        if data_in == []: 
+            ansver = "по вашему запросу данные не найдены"
+        else:
+            ansver = ""
+            left_border = 0
+            right_border = 1
+            
+            ansver += str(data_in[left_border][0]) \
+                + " " + str(data_in[left_border][1]) + \
+                    " " + str(data_in[left_border][2])
+            
+            if len(data_in) > 1:
+                while True:
+                    if data_in[left_border][0] == data_in[left_border+right_border][0] \
+                        and data_in[left_border][1] == data_in[left_border+right_border][1]:
+                        
+                        ansver += " " + str(data_in[left_border+right_border][2])
+                        right_border +=1
+                        if left_border+right_border == len(data_in): break
+                    
+                    else:
+                        left_border += right_border
+                        right_border = 1
+                        ansver += "\n"
+                        ansver += str(data_in[left_border][0]) \
+                            + " " + str(data_in[left_border][1]) + \
+                                " " + str(data_in[left_border][2])
+                        if left_border+right_border == len(data_in): break
+        
+        return ansver
