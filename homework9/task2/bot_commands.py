@@ -4,6 +4,7 @@ import functions_for_sql as sql
 from pathlib import Path
 import text_parsing as t_p
 import logger
+import checking_access_rights as c_a_r
 
 file_name = "telephone_directory.sqlite"
 relative_file_directory = Path(file_name)
@@ -183,34 +184,38 @@ async def delete_record_in_phone_book(update: Update, context: ContextTypes.DEFA
 
     logger.record_keeping(update)
 
-    global relative_file_directory
-    
-    connection = sql.create_connection(relative_file_directory)
-    
-    message = str(update.message.text)
-
-    message = t_p.clearing_line_from_bot_telegrams(message, "/delete_record_in_phone_book")
-
-    message = message.split(" ")
-
-    sql_request_for_search = '''SELECT people.name, people.surname
-    FROM people WHERE name = "{}" AND surname = "{}" '''.format(message[0], message[1])
-
-    ansver_sql_for_request_search = sql.execute_read_query(connection, sql_request_for_search)
-
-    if ansver_sql_for_request_search != []:
-        sql_request_for_id_delete_human = '''SELECT people.id FROM people 
-        WHERE name = "{}" AND surname = "{}" '''.format(message[0], message[1])
-        id_delete_human = sql.execute_read_query(connection, sql_request_for_id_delete_human)[0][0]
-
-        sql_request_for_delete_human_phone_number = '''DELETE FROM phones WHERE people_id = '{}' '''.format(id_delete_human)
-        sql.execute_query(connection, sql_request_for_delete_human_phone_number)
+    if c_a_r.checking_access_rights(update):
         
-        sql_request_for_delete_human = '''DELETE FROM people WHERE id = '{}' '''.format(id_delete_human)
-        sql.execute_query(connection, sql_request_for_delete_human)
-
-        ansver = "запись удалена из телефонной книги"
+        global relative_file_directory
+        
+        connection = sql.create_connection(relative_file_directory)
+        
+        message = str(update.message.text)
+        
+        message = t_p.clearing_line_from_bot_telegrams(message, "/delete_record_in_phone_book")
+        
+        message = message.split(" ")
+        
+        sql_request_for_search = '''SELECT people.name, people.surname
+        FROM people WHERE name = "{}" AND surname = "{}" '''.format(message[0], message[1])
+        
+        ansver_sql_for_request_search = sql.execute_read_query(connection, sql_request_for_search)
+        
+        if ansver_sql_for_request_search != []:
+            sql_request_for_id_delete_human = '''SELECT people.id FROM people 
+            WHERE name = "{}" AND surname = "{}" '''.format(message[0], message[1])
+            id_delete_human = sql.execute_read_query(connection, sql_request_for_id_delete_human)[0][0]
+            
+            sql_request_for_delete_human_phone_number = '''DELETE FROM phones WHERE people_id = '{}' '''.format(id_delete_human)
+            sql.execute_query(connection, sql_request_for_delete_human_phone_number)
+            
+            sql_request_for_delete_human = '''DELETE FROM people WHERE id = '{}' '''.format(id_delete_human)
+            sql.execute_query(connection, sql_request_for_delete_human)
+            
+            ansver = "запись удалена из телефонной книги"
+        else:
+            ansver = "такой записи нет в телефонной книге"
     else:
-        ansver = "такой записи нет в телефонной книге"
+        ansver = "у Вас нет прав доступа к данной функции"
 
     await update.message.reply_text(ansver)

@@ -1,11 +1,10 @@
-
+'''
 ansver = [('Fedor1', 'Sannikov1', 620070), ('Fedor1', 'Sannikov1', 620071), ('Fedor2', 'Sannikov2', 620072), ('Fedor2', 'Sannikov2', 620073), ('Fedor2', 'Sannikov2', 620074)]
 
 #ansver = [('Fedor1', 'Sannikov1', 620070), ('Fedor1', 'Sannikov1', 620071)]
 
 #ansver = [('Fedor1', 'Sannikov1', 620070)]
 
-'''
 ansver_str = ""
 left_border = 0
 right_border = 1
@@ -30,3 +29,19 @@ if len(ansver) > 1:
 
 print(ansver_str)
 '''
+from copy import deepcopy
+
+c = []
+a = [1, 2, [3, [4, c]]]
+
+b1 = a
+b2 = a[:]
+b3 = a.copy()
+b4 = deepcopy(a)
+
+c.append(5)
+
+print(b1)
+print(b2)
+print(b3)
+print(b4)
