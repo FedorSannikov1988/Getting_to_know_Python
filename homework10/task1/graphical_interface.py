@@ -15,7 +15,7 @@ def start_graphical_interface():
         print("download_audio_value", download_audio_value.get())
         print("authentication_value", authentication_value.get())
         print("authentication_once_value", authentication_once_value.get())
-        
+
     def get_url_and_name_download_file():
         show_value_checkbutton()
         url_txt = youtube_video_url.get("1.0",'end-1c')

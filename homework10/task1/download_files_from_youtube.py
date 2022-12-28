@@ -3,12 +3,17 @@ from pathlib import Path
 
 download_folder = "downloaded files from youtube"
 
-def downloading_from_youtube(youtube_video_url: str, name_for_download_file: str, flag_for_download_video: bool, flag_for_download_audio: bool, flag_for_authentication: bool, flag_for_authentication_once: bool):
+def downloading_from_youtube(youtube_video_url: str, \
+    name_for_download_file: str, flag_for_download_video: bool, \
+        flag_for_download_audio: bool, flag_for_authentication: bool, \
+            flag_for_authentication_once: bool):
 
     global download_folder
 
     try: 
-        yt_object = YouTube(youtube_video_url, use_oauth=flag_for_authentication, allow_oauth_cache=flag_for_authentication_once)
+        yt_object = YouTube(youtube_video_url, \
+            use_oauth=flag_for_authentication, \
+                allow_oauth_cache=flag_for_authentication_once)
         
         for_downloading_video = yt_object.streams.filter(progressive=True).desc().first()
         
